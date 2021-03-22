@@ -61,3 +61,6 @@ optional arguments:
 
 ### Note:
 `Model -> [x]` means that model  was fine-tuned on dataset x.
+
+## Reference:
+This code was based on [This code](https://mccormickml.com/2019/07/22/BERT-fine-tuning/)
