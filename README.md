@@ -41,4 +41,23 @@ optional arguments:
                         The TweetEval dataset to choose
   --model_to_load MODEL_TO_LOAD
                         Load pre-trained BERT
-  --save SAVE           Save the model to disk```
+  --save SAVE           Save the model to disk
+```
+
+
+## Results
+
+
+| Model | Emoji [1] | Emotion [2] | Hate [3] | Irony [4] | Offensive [5] | Sentiment [6] | Total |
+|----------|------:|--------:|-----:|------:|----------:|----------:|---------|
+| BERTweet   | x.y     | x.y       | x.y    | x.y     | x.y         | x.y         | x.y     |
+| BERTweet -> [1]  | x.y     | x.y       | x.y    | x.y     | x.y         | x.y         | x.y     |
+| BERTweet -> [1] -> [2] | x.y     | x.y       | x.y    | x.y     | x.y         | x.y         | x.y     |
+| BERTweet -> [1] -> [2] -> [3] | x.y     | x.y       | x.y    | x.y     | x.y         | x.y         | x.y     |
+| BERTweet -> [1] -> [2] -> [3] -> [4] | x.y     | x.y       | x.y    | x.y     | x.y         | x.y         | x.y     |
+| BERTweet -> [1] -> [2] -> [3] -> [4] | x.y     | x.y       | x.y    | x.y     | x.y         | x.y         | x.y     |
+| BERTweet -> [1] -> [2] -> [3] -> [4] -> [5] | x.y     | x.y       | x.y    | x.y     | x.y         | x.y         | x.y     |
+| BERTweet -> [1] -> [2] -> [3] -> [4] -> [5] -> [6] | x.y     | x.y       | x.y    | x.y     | x.y         | x.y         | x.y     |
+
+### Note:
+`Model -> [x]` means that model  was fine-tuned on dataset x.
