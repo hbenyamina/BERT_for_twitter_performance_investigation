@@ -1,2 +1,44 @@
 # BERT_for_twitter_performance_investigation
+## Description
 I investigated the performance of BERT/BERTweet performance on the TweetEval benchmark using different transfer learning scenarios. 
+
+## Dataset:  
+The dataset used in the TweetEval dataset at [tweetevel](https://github.com/cardiffnlp/tweeteval). To download the dataset: 
+```bash
+git clone https://github.com/cardiffnlp/tweeteval
+```
+
+## Dependancies
+To install dependancies run the following command:
+```bash
+pip install -r requirements.txt
+```
+
+## Training:
+Here is the syntax of the python file
+```
+usage: run_emotions.py [-h] [--batch_size BATCH_SIZE]
+                                               [--epochs EPOCHS]
+                                               [--total_steps TOTAL_STEPS]
+                                               [--dataset_location DATASET_LOCATION]
+                                               [--model_class MODEL_CLASS]
+                                               [--dataset {emoji,emotion,hate,irony,offensive,sentiment}]
+                                               [--model_to_load MODEL_TO_LOAD]
+                                               [--save SAVE]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --batch_size BATCH_SIZE
+                        The batch size for training
+  --epochs EPOCHS       The batch size for training
+  --total_steps TOTAL_STEPS
+                        Number of training steps
+  --dataset_location DATASET_LOCATION
+                        The tweetEval dataset location
+  --model_class MODEL_CLASS
+                        The pre-trained hugginface model to load
+  --dataset {emoji,emotion,hate,irony,offensive,sentiment}
+                        The TweetEval dataset to choose
+  --model_to_load MODEL_TO_LOAD
+                        Load pre-trained BERT
+  --save SAVE           Save the model to disk```

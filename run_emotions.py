@@ -42,21 +42,6 @@ def read_dataset(root_dir='.',dataset='hate'):
     num_classes = df_train.label.unique().shape[0]
     return df_train,df_test,df_valid,num_classes
 
-def calculate_score(preds,y_test):
-    y =  np.array(preds)
-    results = dict()
-    results['precision_score_0'] = round(precision_score(y_test,y,average=None)[0],2)
-    results['recall_score_0'] = round(recall_score(y_test,y,average=None)[0],2)
-    results['f1_score_0'] = round(f1_score(y_test,y,average=None)[0],2)
-
-    results['precision_score_1'] = round(precision_score(y_test,y,average=None)[1],2)
-    results['recall_score_1'] = round(recall_score(y_test,y,average=None)[1],2)
-    results['f1_score_1'] = round(f1_score(y_test,y,average=None)[1],2)
-
-    results['f1_score_weighted'] = round(f1_score(y_test,y,average='weighted'),2)
-
-    return results
-
 def encode_sentence(s, tokenizer):
    return tokenizer.encode_plus(
                         s,                      
@@ -140,12 +125,6 @@ def validate(model,test_dataloader):
     print("  Test took: {:}".format(validation_time))
     return preds, avg_val_accuracy, avg_val_loss, validation_time
 
-def evaluate_on_testset(model,test_dataloader,test_tweets_labels):
-    preds = validate(model,test_dataset)
-
-    preds,_ = np.concatenate(preds).argmax(axis=1)
-
-    calculate_score(preds,tweet_test_labels)
 
 def prepare_dataloaders(df_train,df_test,df_valid,tokenizer_class="vinai/bertweet-base",batch_size=32):
 
@@ -189,7 +168,7 @@ def prepare_dataloaders(df_train,df_test,df_valid,tokenizer_class="vinai/bertwee
                 sampler = SequentialSampler(test_dataset), 
                 batch_size = batch_size
             )
-    return train_dataloader,validation_dataloader,test_dataloader, tweet_train_labels , tweet_valid_labels , tweet_test_labels
+    return train_dataloader,validation_dataloader,test_dataloader
 
 def prepare_model(model_class="vinai/bertweet-base",num_classes=2,model_to_load=None,total_steps=-1):
 
@@ -213,6 +192,7 @@ def prepare_model(model_class="vinai/bertweet-base",num_classes=2,model_to_load=
     if model_to_load is not None:
         try:
             model.roberta.load_state_dict(torch.load(model_to_load))
+            print("LOADED MODEL")
         except:
             pass
     return model, optimizer, scheduler
@@ -297,7 +277,7 @@ def main():
     args = parser.parse_args()
 
     df_train,df_test,df_valid,num_classes = read_dataset(root_dir=args.dataset_location,dataset=args.dataset)
-    train_dataloader,validation_dataloader,test_dataloader, tweet_train_labels , tweet_valid_labels , tweet_test_labels = prepare_dataloaders(df_train,df_test,
+    train_dataloader,validation_dataloader,test_dataloader = prepare_dataloaders(df_train,df_test,
                                                                 df_valid,
                                                                 tokenizer_class="vinai/bertweet-base",
                                                                 batch_size=args.batch_size)
@@ -308,7 +288,7 @@ def main():
 
     model, optimizer, scheduler = prepare_model(args.model_class,num_classes,args.model_to_load,args.total_steps)
     train(model,optimizer,scheduler,train_dataloader,validation_dataloader,args.epochs,args.save)
-    evaluate_on_testset(model,test_dataloader,tweet_test_labels)
+    validate(model,test_dataloader)
 
 
 if __name__ == '__main__':
