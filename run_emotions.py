@@ -17,7 +17,11 @@ from torch.utils.data import (TensorDataset,DataLoader,
 
 
 
-
+MODEL_CLASSES = {
+    'bertweet' : 'vinai/bertweet-base',
+    'roberta' : 'roberta-base',
+    'bert' : 'bert-base-uncased'
+}
 
 
 def read_dataset(root_dir='.',dataset='hate'):
@@ -269,7 +273,7 @@ def main():
     parser.add_argument('--epochs',type=int,default=4,help='The batch size for training')
     parser.add_argument('--total_steps',type=int,default=-1,help='Number of training steps')
     parser.add_argument('--dataset_location',type=str,default='.',help='The tweetEval dataset location')
-    parser.add_argument('--model_class',type=str,default='vinai/bertweet-base',help='The pre-trained hugginface model to load')
+    parser.add_argument('--model_class',type=str,default='bertweet', choices=['bertweet','bert','roberta'],help='The pre-trained hugginface model to load')
     parser.add_argument('--dataset',type=str,default='hate',choices=['emoji','emotion','hate','irony','offensive','sentiment'],help='The TweetEval dataset to choose')
     parser.add_argument('--model_to_load',type=str,default=None,help='Load pre-trained BERT')
     parser.add_argument('--save',type=str,default='./model.pb',help='Save the model to disk')
@@ -286,7 +290,7 @@ def main():
     elif args.total_steps == -1 and train_dataloader is None:
         args.total_steps = 1000
 
-    model, optimizer, scheduler = prepare_model(args.model_class,num_classes,args.model_to_load,args.total_steps)
+    model, optimizer, scheduler = prepare_model(MODEL_CLASSES[args.model_class],num_classes,args.model_to_load,args.total_steps)
     train(model,optimizer,scheduler,train_dataloader,validation_dataloader,args.epochs,args.save)
     validate(model,test_dataloader)
 

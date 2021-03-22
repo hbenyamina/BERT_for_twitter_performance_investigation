@@ -44,6 +44,7 @@ optional arguments:
   --save SAVE           Save the model to disk
 ```
 
+Model is by default  [vinai/bertweet-base](https://huggingface.co/vinai/bertweet-base)
 
 ## Results
 
@@ -64,3 +65,6 @@ optional arguments:
 
 ## Reference:
 This code was based on [This code](https://mccormickml.com/2019/07/22/BERT-fine-tuning/)
+
+## TODO:
+[ ] test all the compatible hugginface models
