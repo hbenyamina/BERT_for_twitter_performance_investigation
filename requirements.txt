@@ -1,6 +1,7 @@
 numpy 
 pandas 
 sklearn 
+scipy
 torch 
 transformers 
 emoji
