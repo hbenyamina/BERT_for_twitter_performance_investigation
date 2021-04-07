@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 from torch.nn import functional as F
 from sklearn.metrics import (f1_score, recall_score, accuracy_score,
-                                precision_score, jaccard_score,jaccard_similarity_score)
+                                precision_score)
 from transformers import (get_linear_schedule_with_warmup,AdamW,AutoModel, AutoTokenizer,
                             AutoModelForSequenceClassification)
 from torch.utils.data import (TensorDataset,DataLoader,
