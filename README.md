@@ -51,7 +51,7 @@ Model is by default  [vinai/bertweet-base](https://huggingface.co/vinai/bertweet
 
 | Model | Emoji [1] | Emotion [2] | Hate [3] | Irony [4] | Offensive [5] | Sentiment [6] | Total |
 |----------|------:|--------:|-----:|------:|----------:|----------:|---------|
-| BERTweet   | x.y     | x.y       | 0.58    | x.y     | x.y         | x.y         | x.y     |
+| BERTweet   | x.y     | 0.84       | 0.58    | x.y     | x.y         | x.y         | x.y     |
 | BERTweet -> [1]  | x.y     | x.y       | x.y    | x.y     | x.y         | x.y         | x.y     |
 | BERTweet -> [1] -> [2] | x.y     | x.y       | x.y    | x.y     | x.y         | x.y         | x.y     |
 | BERTweet -> [1] -> [2] -> [3] | x.y     | x.y       | x.y    | x.y     | x.y         | x.y         | x.y     |
