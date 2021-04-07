@@ -11,7 +11,7 @@ git clone https://github.com/cardiffnlp/tweeteval
 ## Dependancies
 To install dependancies run the following command:
 ```bash
-pip install -r requirements.txt
+cd BERT_for_twitter_performance_investigation &&  pip install -r requirements.txt
 ```
 
 ## Training:
