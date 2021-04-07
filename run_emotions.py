@@ -122,7 +122,7 @@ def validate(model,test_dataloader):
         
 
     avg_val_accuracy = total_eval_accuracy / len(test_dataloader)
-    print("  Accuracy: {0:.2f}".format(avg_val_accuracy))
+    print("  Accuracy: {0:.2f} %".format(avg_val_accuracy*100))
     avg_val_loss = total_eval_loss / len(test_dataloader)
     validation_time = format_time(time.time() - t0)
     print("  Test Loss: {0:.2f}".format(avg_val_loss))
