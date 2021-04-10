@@ -53,7 +53,7 @@ Model is by default  [vinai/bertweet-base](https://huggingface.co/vinai/bertweet
 |----------|------:|--------:|-----:|------:|----------:|----------:|---------|
 | BERTweet   | 70.79       | 85.18       | 59.06    |82.62     | 83.25         | 38.90     | 69.925     |
 | BERTweet -> [1]  | 70.91      | 84.35       | 56.76   | 79.50    | 83.37         | 39.21        | x.y     |
-| BERTweet -> [1] -> [2] | x.y     | x.y       | x.y    | x.y     | x.y         | x.y         | x.y     |
+| BERTweet -> [1] -> [2] | 7095     | 84.59       | 56.12    | 83.12     | 83.71        | 39.12         | x.y     |
 | BERTweet -> [1] -> [2] -> [3] | x.y     | x.y       | x.y    | x.y     | x.y         | x.y         | x.y     |
 | BERTweet -> [1] -> [2] -> [3] -> [4] | x.y     | x.y       | x.y    | x.y     | x.y         | x.y         | x.y     |
 | BERTweet -> [1] -> [2] -> [3] -> [4] | x.y     | x.y       | x.y    | x.y     | x.y         | x.y         | x.y     |
